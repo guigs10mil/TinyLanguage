@@ -1,0 +1,35 @@
+PROGRAM = { FUNCTION } ;
+
+FUNCTION = TYPE, IDENTIFIER, "(", { TYPE, IDENTIFIER, "," }, ")", BLOCK ;
+
+BLOCK = "{", { STATMENT }, "}" ;
+
+STATMENT = DECLARATION | ATTRIBUTION | PRINT | IF | WHILE | ("return", "(", CONDITION, ")", ";") ;
+
+TYPE = "int" | "bool" ;
+
+DECLARATION = TYPE, IDENTIFIER, [ "=", EXPRESSION ], ";" ;
+
+ATTRIBUTION = IDENTIFIER, "=", EXPRESSION, ";" ;
+
+PRINT = "print", "(", EXPRESSION, ")", ";" ;
+
+IF = "if", "(", CONDITION, ")", BLOCK, [ "else", BLOCK ] ;
+
+WHILE = "while", "(", CONDITION, ")", BLOCK ;
+
+CONDITION = ["!"], EXPRESSION, [ ("==" | ">" | "<"), EXPRESSION ], { ("&&" | "||"), CONDITION } ;
+
+IDENTIFIER = CHARACTER, { CHARACTER | DIGIT } ;
+
+CHARACTER = "a" | ... | "z" | "A" | ... | "Z" ;
+
+EXPRESSION = TERM, { ("+" | "-"), TERM } ;
+
+TERM = FACTOR, { ("*" | "/"), FACTOR } ;
+
+FACTOR = NUMBER | (("+" | "-"), FACTOR) | ("(", EXPRESSION,")") | IDENTIFIER ;
+
+NUMBER = DIGIT, { DIGIT } ;
+
+DIGIT = "0" | "1" | ... | "9" ;
