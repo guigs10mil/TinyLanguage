@@ -1,0 +1,16 @@
+f sub(x:I, y:I):I
+    l a:I
+
+    a = x - y
+    r a
+ed
+
+l a:I
+l b:I
+l c:I
+
+a = 10
+b = 4
+c = sub(a, b)
+
+p(a * " - " * b * " é igual a " * c)
