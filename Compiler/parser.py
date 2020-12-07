@@ -151,7 +151,7 @@ class Parser:
                     res = Assignment("=", [identifier, Parser.parseRelExpression()])
 
             elif (Parser.tokens.actual.type == "POPEN"):
-                res = FuncCall(identifier, [])
+                res = FuncCall(identifier.value, [])
                 Parser.tokens.selectNext()
 
                 if (Parser.tokens.actual.type != "PCLOSE"):

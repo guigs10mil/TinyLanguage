@@ -96,7 +96,7 @@ class While(Node):
 class If(Node):
     def evaluate(self, table: SymbolTable):
         condition = self.children[0].evaluate(table)
-        if condition[0] != "Bool":
+        if condition[0] == "String":
             raise ValueError("'If' cannot accept strings as conditions: " + condition[0])
 
         if condition[1]:
